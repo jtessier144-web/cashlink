@@ -3,12 +3,16 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#080b0a">
-  <meta name="description" content="CashLink rassemble des plateformes de sondages et de récompenses à découvrir. Consulte les conditions de chaque offre avant de commencer.">
-  <title>CashLink — Bons plans et récompenses</title>
+  <meta name="description" content="CashLink : découvre des plateformes de sondages, de jeux et de récompenses en ligne.">
+  <meta property="og:title" content="CashLink — Découvre et gagne des récompenses">
+  <meta property="og:description" content="Explore des plateformes de récompenses en ligne et trouve celles qui te correspondent.">
+  <meta property="og:type" content="website">
 
-  <!-- Publicités Adcash -->
+  <title>CashLink — Récompenses en ligne</title>
+
+  <!-- Adcash : intégration conservée -->
   <script id="aclib" type="text/javascript" src="https://acscdn.com/script/aclib.js"></script>
   <script type="text/javascript">
     if (window.aclib && typeof window.aclib.runAutoTag === "function") {
@@ -20,690 +24,863 @@
 
   <style>
     :root {
-      color-scheme: dark;
       --bg: #080b0a;
-      --panel: #111714;
-      --panel-2: #151e19;
-      --line: #29372e;
+      --surface: #101612;
+      --surface2: #151e17;
       --green: #8cff65;
-      --green-2: #4de12f;
-      --text: #f5f8f4;
-      --muted: #a8b5aa;
-      --radius: 20px;
-      --max: 1120px;
+      --green-dark: #4edb55;
+      --text: #f4f7f3;
+      --muted: #a5b0a6;
+      --border: #263329;
+      --radius: 18px;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 85px;
+    }
 
     body {
-      margin: 0;
-      background:
-        radial-gradient(ellipse at 75% -10%, rgba(70, 190, 55, .13), transparent 40%),
-        var(--bg);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
       color: var(--text);
-      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.6;
     }
 
-    a { color: inherit; }
-
-    a:focus-visible {
-      outline: 3px solid var(--green);
-      outline-offset: 4px;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    .wrap {
-      width: min(var(--max), calc(100% - 36px));
-      margin-inline: auto;
+    button,
+    input {
+      font: inherit;
     }
 
-    .topbar {
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .container {
+      width: min(1100px, 92%);
+      margin: auto;
+    }
+
+    .navbar {
       position: sticky;
       top: 0;
-      z-index: 20;
-      background: rgba(8, 11, 10, .9);
-      border-bottom: 1px solid rgba(140, 255, 101, .12);
+      z-index: 100;
+      background: rgba(8, 11, 10, .94);
+      border-bottom: 1px solid var(--border);
       backdrop-filter: blur(14px);
     }
 
-    .nav {
-      min-height: 76px;
+    .nav-inner {
+      min-height: 68px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 20px;
-    }
-
-    .brand {
-      display: inline-flex;
       align-items: center;
-      gap: 12px;
-      text-decoration: none;
-      font-size: 1.35rem;
-      font-weight: 850;
-      letter-spacing: -.04em;
+      gap: 15px;
     }
 
-    .brand-mark {
-      width: 43px;
-      height: 43px;
-      display: grid;
-      place-items: center;
-      border-radius: 14px;
-      color: #071006;
-      background: linear-gradient(135deg, var(--green), var(--green-2));
-      font-size: 1.25rem;
-      font-weight: 950;
-      box-shadow: 0 0 28px rgba(100, 255, 70, .15);
+    .logo {
+      font-size: 23px;
+      font-weight: 900;
+      letter-spacing: -1px;
     }
 
-    .brand span span { color: var(--green); }
+    .logo span {
+      color: var(--green);
+    }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 24px;
-    }
-
-    .nav-links a {
-      text-decoration: none;
+      gap: 19px;
+      font-size: 13px;
       color: var(--muted);
-      font-size: .92rem;
     }
 
-    .nav-links a:hover { color: var(--green); }
-
-    .hero { padding: 64px 0 34px; }
-
-    .hero-card {
-      overflow: hidden;
-      position: relative;
-      padding: clamp(28px, 6vw, 64px);
-      border: 1px solid #2d4a32;
-      border-radius: 28px;
-      background: linear-gradient(
-        120deg,
-        rgba(24, 44, 29, .96),
-        rgba(12, 20, 15, .98) 58%,
-        rgba(17, 38, 20, .95)
-      );
-      box-shadow: 0 22px 70px rgba(0, 0, 0, .24);
-    }
-
-    .hero-card::after {
-      content: "";
-      position: absolute;
-      width: 330px;
-      height: 330px;
-      right: -80px;
-      top: -100px;
-      border-radius: 50%;
-      background: rgba(104, 255, 74, .12);
-      filter: blur(65px);
-      pointer-events: none;
-    }
-
-    .hero-content {
-      max-width: 710px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      gap: 9px;
-      align-items: center;
+    .nav-links a:hover {
       color: var(--green);
-      text-transform: uppercase;
-      letter-spacing: .13em;
-      font-size: .76rem;
-      font-weight: 850;
     }
 
-    .eyebrow::before {
-      content: "";
-      width: 24px;
-      height: 2px;
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      border: 0;
+      border-radius: 11px;
+      padding: 12px 17px;
       background: var(--green);
+      color: #071006;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform .2s, background .2s;
+    }
+
+    .button:hover {
+      background: #a5ff88;
+      transform: translateY(-2px);
+    }
+
+    .button.secondary {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 76px 0 58px;
+      text-align: center;
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(91, 255, 103, .13), transparent 58%);
+    }
+
+    .badge {
+      display: inline-block;
+      color: var(--green);
+      border: 1px solid #34553a;
+      background: rgba(140, 255, 101, .06);
+      padding: 6px 12px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 20px;
     }
 
     h1 {
-      margin: 18px 0;
-      max-width: 720px;
-      font-size: clamp(2.6rem, 7vw, 5.25rem);
-      line-height: .99;
-      letter-spacing: -.065em;
+      font-size: clamp(36px, 7vw, 65px);
+      line-height: 1.06;
+      letter-spacing: -2px;
+      max-width: 850px;
+      margin: 0 auto 20px;
     }
 
-    h1 em {
+    h1 span {
       color: var(--green);
-      font-style: normal;
     }
 
     .hero p {
-      max-width: 600px;
-      color: #c0cbbf;
-      font-size: clamp(1rem, 2vw, 1.15rem);
-      margin: 0 0 28px;
+      color: var(--muted);
+      max-width: 650px;
+      margin: 0 auto 27px;
+      font-size: 17px;
     }
 
-    .actions {
+    .hero-actions {
       display: flex;
+      justify-content: center;
       flex-wrap: wrap;
       gap: 12px;
     }
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 9px;
-      min-height: 48px;
-      padding: 12px 19px;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: 800;
-      transition: transform .18s ease, background .18s ease;
-    }
-
-    .btn:hover { transform: translateY(-2px); }
-
-    .btn-primary {
-      background: var(--green);
-      color: #071006;
-    }
-
-    .btn-primary:hover { background: #a5ff88; }
-
-    .btn-secondary {
-      border: 1px solid #455747;
-      background: rgba(255,255,255,.025);
-      color: var(--text);
-    }
-
-    .btn-secondary:hover { border-color: var(--green); }
-
-    .trust-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px 20px;
-      margin-top: 28px;
+    .notice {
       color: var(--muted);
-      font-size: .82rem;
+      font-size: 12px;
+      margin-top: 19px;
     }
 
-    .trust-row span::before {
-      content: "✓";
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      padding-bottom: 45px;
+    }
+
+    .stat {
+      text-align: center;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 10px;
+    }
+
+    .stat strong {
+      display: block;
       color: var(--green);
-      font-weight: 900;
-      margin-right: 7px;
+      font-size: 20px;
     }
 
-    section { scroll-margin-top: 95px; }
+    .stat span {
+      color: var(--muted);
+      font-size: 12px;
+    }
 
-    .section { padding: 36px 0; }
+    section {
+      padding: 44px 0;
+    }
 
-    .section-head {
+    .section-heading {
       display: flex;
-      align-items: end;
       justify-content: space-between;
-      gap: 20px;
+      align-items: end;
+      gap: 15px;
       margin-bottom: 22px;
     }
 
-    .kicker {
-      color: var(--green);
-      font-size: .76rem;
-      font-weight: 850;
-      letter-spacing: .12em;
-      text-transform: uppercase;
+    .section-heading h2,
+    .center-heading h2 {
+      font-size: clamp(26px, 4vw, 36px);
+      letter-spacing: -1px;
     }
 
-    h2 {
-      margin: 4px 0 0;
-      font-size: clamp(1.7rem, 4vw, 2.4rem);
-      letter-spacing: -.045em;
-      line-height: 1.15;
-    }
-
-    .section-head p {
+    .section-heading p,
+    .center-heading p {
       color: var(--muted);
-      margin: 8px 0 0;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+
+    .center-heading {
+      text-align: center;
       max-width: 650px;
+      margin: 0 auto 28px;
     }
 
-    .small-link {
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .filter {
+      padding: 9px 13px;
+      color: var(--muted);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    .filter.active,
+    .filter:hover {
       color: var(--green);
-      text-decoration: none;
-      font-weight: 750;
-      white-space: nowrap;
+      border-color: var(--green);
     }
 
-    .small-link:hover { text-decoration: underline; }
+    .search {
+      width: 100%;
+      padding: 14px 15px;
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      outline: none;
+      margin-bottom: 18px;
+    }
+
+    .search:focus {
+      border-color: var(--green);
+    }
 
     .offer-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
+      gap: 17px;
     }
 
-    .offer {
-      position: relative;
-      min-height: 250px;
-      padding: 25px;
+    .offer-card {
+      background: linear-gradient(145deg, var(--surface2), var(--surface));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 23px;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      background: linear-gradient(145deg, var(--panel-2), var(--panel));
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
       transition: border-color .2s, transform .2s;
     }
 
-    .offer:hover {
-      border-color: #53794d;
+    .offer-card:hover {
+      border-color: #507d51;
       transform: translateY(-3px);
     }
 
     .offer-top {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 13px;
       margin-bottom: 15px;
     }
 
     .offer-icon {
-      width: 52px;
-      height: 52px;
+      width: 49px;
+      height: 49px;
+      border-radius: 13px;
       display: grid;
       place-items: center;
-      flex: 0 0 auto;
-      border-radius: 16px;
-      background: #203b24;
-      font-size: 1.55rem;
+      background: rgba(140, 255, 101, .1);
+      font-size: 25px;
+      flex-shrink: 0;
     }
 
-    .offer h3 {
-      margin: 0;
-      font-size: 1.2rem;
-      letter-spacing: -.02em;
+    .offer-top h3 {
+      font-size: 19px;
     }
 
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      border: 1px solid #365b36;
+    .offer-category {
       color: var(--green);
-      background: rgba(100, 255, 70, .06);
-      padding: 4px 9px;
-      border-radius: 99px;
-      font-size: .72rem;
-      font-weight: 800;
-      margin-top: 5px;
+      font-size: 12px;
     }
 
-    .offer p {
+    .offer-card p {
       color: var(--muted);
-      margin: 0 0 20px;
-      font-size: .94rem;
-      flex: 1;
+      font-size: 14px;
+      margin-bottom: 18px;
     }
 
-    .offer .btn { width: 100%; }
+    .offer-card .button {
+      width: 100%;
+      margin-top: auto;
+    }
 
-    .fineprint {
-      margin-top: 20px;
-      padding: 16px 18px;
-      border: 1px solid var(--line);
-      border-radius: 14px;
+    .disclaimer {
       color: var(--muted);
-      font-size: .83rem;
+      font-size: 12px;
+      margin-top: 18px;
     }
 
-    .fineprint strong { color: var(--text); }
-
-    .steps {
+    .steps-grid,
+    .benefits-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 22px;
+      gap: 15px;
     }
 
-    .step {
-      padding: 22px;
+    .info-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
       border-radius: 16px;
-      background: var(--panel);
-      border: 1px solid var(--line);
+      padding: 21px;
     }
 
-    .step-num {
-      display: grid;
+    .number {
+      display: inline-grid;
       place-items: center;
       width: 34px;
       height: 34px;
-      border-radius: 11px;
-      background: var(--green);
-      color: #071006;
-      font-weight: 950;
-      margin-bottom: 15px;
+      background: rgba(140, 255, 101, .1);
+      color: var(--green);
+      border-radius: 10px;
+      font-weight: 900;
+      margin-bottom: 12px;
     }
 
-    .step h3 { margin: 0 0 7px; font-size: 1rem; }
+    .info-card h3 {
+      font-size: 16px;
+      margin-bottom: 7px;
+    }
 
-    .step p {
-      margin: 0;
+    .info-card p {
       color: var(--muted);
-      font-size: .9rem;
+      font-size: 13px;
     }
 
-    .notice {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
+    .tips {
+      border: 1px solid #34553a;
+      background: rgba(140, 255, 101, .045);
+      border-radius: var(--radius);
+      padding: 23px;
     }
 
-    .notice-card {
-      padding: 24px;
-      border: 1px solid #234b2a;
-      border-radius: 18px;
-      background: linear-gradient(135deg, rgba(27, 63, 32, .35), rgba(17, 23, 20, .85));
+    .tips h3 {
+      color: var(--green);
+      margin-bottom: 10px;
     }
 
-    .notice-card h3 { margin: 0 0 9px; }
-
-    .notice-card p {
-      margin: 0;
+    .tips ul {
+      padding-left: 20px;
       color: var(--muted);
-      font-size: .93rem;
+      font-size: 14px;
     }
 
-    .cta {
-      margin: 24px 0 60px;
-      padding: 26px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      border-radius: 20px;
-      border: 1px solid #315b36;
-      background: linear-gradient(100deg, #152b19, #101713);
+    .tips li + li {
+      margin-top: 6px;
     }
 
-    .cta h2 { font-size: 1.45rem; }
+    .faq-list {
+      max-width: 780px;
+      margin: auto;
+    }
 
-    .cta p { margin: 7px 0 0; color: var(--muted); }
+    details {
+      padding: 17px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    details p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    .transparency {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 18px;
+      border-radius: 14px;
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 25px;
+    }
 
     footer {
-      border-top: 1px solid var(--line);
-      padding: 28px 0 36px;
-      color: var(--muted);
-      font-size: .83rem;
+      border-top: 1px solid var(--border);
+      padding: 28px 0;
+      margin-top: 30px;
     }
 
     .footer-inner {
       display: flex;
-      flex-wrap: wrap;
       justify-content: space-between;
-      gap: 18px;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    footer p,
+    footer a {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    footer a:hover {
+      color: var(--green);
     }
 
     .footer-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 16px;
+      gap: 14px;
     }
 
-    footer a { color: var(--muted); }
-    footer a:hover { color: var(--green); }
-
-    .copyright {
-      margin-top: 15px;
-      max-width: 850px;
+    .empty-message {
+      display: none;
+      color: var(--muted);
+      padding: 20px 0;
     }
 
     @media (max-width: 700px) {
-      .wrap { width: min(100% - 26px, var(--max)); }
-      .nav { min-height: 66px; }
-      .nav-links { gap: 13px; }
-      .nav-links a { font-size: .82rem; }
-      .nav-links a:nth-child(2) { display: none; }
-      .brand { font-size: 1.15rem; gap: 8px; }
-      .brand-mark { width: 38px; height: 38px; border-radius: 12px; }
-      .hero { padding-top: 28px; }
-      .hero-card { border-radius: 22px; padding: 30px 23px; }
-      .offer-grid, .notice { grid-template-columns: 1fr; }
-      .steps { grid-template-columns: 1fr; }
-      .section-head { align-items: flex-start; flex-direction: column; }
-      .cta { align-items: flex-start; flex-direction: column; }
-      .cta .btn { width: 100%; }
-    }
+      .nav-inner {
+        min-height: 60px;
+      }
 
-    @media (max-width: 380px) {
-      .nav-links a { font-size: .76rem; }
-      .hero-card { padding: 25px 18px; }
-      .actions .btn { width: 100%; }
+      .nav-links {
+        gap: 10px;
+        font-size: 12px;
+      }
+
+      .nav-links .nav-cta {
+        display: none;
+      }
+
+      .hero {
+        padding: 55px 0 38px;
+      }
+
+      .stats {
+        gap: 7px;
+      }
+
+      .stat {
+        padding: 13px 5px;
+      }
+
+      .stat strong {
+        font-size: 17px;
+      }
+
+      .stat span {
+        font-size: 10px;
+      }
+
+      .offer-grid,
+      .steps-grid,
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-heading {
+        display: block;
+      }
+
+      .offer-card {
+        padding: 19px;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after { transition: none !important; }
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition: none !important;
+      }
     }
   </style>
 </head>
 
 <body>
-  <header class="topbar">
-    <div class="wrap nav">
-      <a class="brand" href="#accueil" aria-label="CashLink, accueil">
-        <span class="brand-mark">C$</span>
-        <span>Cash<span>Link</span></span>
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a class="logo" href="#accueil" aria-label="CashLink, accueil">
+        Cash<span>Link</span>
       </a>
 
       <nav class="nav-links" aria-label="Navigation principale">
-        <a href="#offres">Les offres</a>
-        <a href="#fonctionnement">Comment ça marche</a>
-        <a href="#transparence">Transparence</a>
+        <a href="#offres">Offres</a>
+        <a href="#fonctionnement">Guide</a>
+        <a href="#faq">FAQ</a>
+        <a class="nav-cta" href="#offres">Découvrir</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <section class="hero wrap" id="accueil">
-      <div class="hero-card">
-        <div class="hero-content">
-          <div class="eyebrow">Les bons plans à découvrir</div>
+    <section class="hero" id="accueil">
+      <div class="container">
+        <span class="badge">● TON ESPACE RÉCOMPENSES</span>
 
-          <h1>Les bons plans,<br><em>au même endroit.</em></h1>
+        <h1>Explore. Compare.<br><span>Choisis tes offres.</span></h1>
 
-          <p>
-            Découvre des plateformes de sondages et de récompenses,
-            compare les possibilités et choisis les offres qui te correspondent.
-          </p>
+        <p>
+          Découvre des plateformes de sondages et de récompenses en ligne.
+          Compare les possibilités et choisis celles qui te correspondent.
+        </p>
 
-          <div class="actions">
-            <a class="btn btn-primary" href="#offres">
-              Découvrir les offres <span aria-hidden="true">→</span>
-            </a>
-            <a class="btn btn-secondary" href="#fonctionnement">
-              Comment ça marche ?
-            </a>
-          </div>
-
-          <div class="trust-row">
-            <span>Accès gratuit au site</span>
-            <span>Conditions clairement indiquées</span>
-            <span>Aucun gain garanti</span>
-          </div>
+        <div class="hero-actions">
+          <a class="button" href="#offres">Explorer les offres ↗</a>
+          <a class="button secondary" href="#fonctionnement">Comment ça marche ?</a>
         </div>
+
+        <p class="notice">
+          Gratuit pour consulter · Aucun gain garanti · Vérifie les conditions de chaque plateforme
+        </p>
       </div>
     </section>
 
-    <section class="section wrap" id="offres">
-      <div class="section-head">
-        <div>
-          <div class="kicker">Sélection CashLink</div>
-          <h2>Découvre les offres</h2>
-          <p>Explore les plateformes et lis toujours leurs conditions avant de t'inscrire.</p>
+    <div class="container">
+      <div class="stats">
+        <div class="stat">
+          <strong>100 %</strong>
+          <span>Gratuit à consulter</span>
         </div>
-        <a class="small-link" href="#conseils">Voir les conseils ↓</a>
+        <div class="stat">
+          <strong>À ton rythme</strong>
+          <span>Tu choisis tes activités</span>
+        </div>
+        <div class="stat">
+          <strong>Sans garantie</strong>
+          <span>Les gains varient</span>
+        </div>
       </div>
+    </div>
 
-      <div class="offer-grid">
-        <article class="offer">
-          <div class="offer-top">
-            <div class="offer-icon" aria-hidden="true">🎮</div>
-            <div>
-              <h3>Freecash</h3>
-              <span class="pill">Jeux et missions</span>
+    <section id="offres">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <h2>Découvre les plateformes</h2>
+            <p>Recherche une plateforme ou filtre par catégorie.</p>
+          </div>
+        </div>
+
+        <input
+          class="search"
+          id="offerSearch"
+          type="search"
+          placeholder="🔎 Rechercher une plateforme..."
+          aria-label="Rechercher une plateforme"
+        >
+
+        <div class="filters" aria-label="Filtrer les offres">
+          <button class="filter active" data-filter="all" type="button">Tout</button>
+          <button class="filter" data-filter="surveys" type="button">Sondages</button>
+          <button class="filter" data-filter="games" type="button">Jeux</button>
+          <button class="filter" data-filter="referral" type="button">Récompenses</button>
+        </div>
+
+        <div class="offer-grid" id="offerGrid">
+          <article class="offer-card" data-category="games referral">
+            <div class="offer-top">
+              <div class="offer-icon" aria-hidden="true">🎮</div>
+              <div>
+                <h3>Freecash</h3>
+                <span class="offer-category">Jeux · Missions · Récompenses</span>
+              </div>
             </div>
-          </div>
 
-          <p>
-            Découvre des jeux, des missions et des offres pouvant donner droit
-            à des récompenses, selon les conditions et la validation de chaque offre.
-          </p>
+            <p>
+              Découvre des missions, des jeux et d'autres activités proposées
+              sur la plateforme. Les conditions et les récompenses dépendent
+              de chaque offre.
+            </p>
 
-          <a
-            class="btn btn-primary"
-            href="https://freecash.com/r/3A4ARU"
-            target="_blank"
-            rel="noopener noreferrer">
-            Découvrir Freecash <span aria-hidden="true">↗</span>
-          </a>
-        </article>
+            <a
+              class="button"
+              href="https://freecash.com/r/3A4ARU"
+              target="_blank"
+              rel="noopener noreferrer sponsored"
+            >Découvrir Freecash ↗</a>
+          </article>
 
-        <article class="offer">
-          <div class="offer-top">
-            <div class="offer-icon" aria-hidden="true">📝</div>
-            <div>
-              <h3>LifePoints</h3>
-              <span class="pill">Sondages</span>
+          <article class="offer-card" data-category="surveys">
+            <div class="offer-top">
+              <div class="offer-icon" aria-hidden="true">📝</div>
+              <div>
+                <h3>LifePoints</h3>
+                <span class="offer-category">Sondages rémunérés</span>
+              </div>
             </div>
-          </div>
 
-          <p>
-            Participe à des sondages en ligne lorsque tu es éligible et consulte
-            les modalités de cumul et d'utilisation des récompenses.
-          </p>
+            <p>
+              Réponds à des sondages lorsque tu es éligible. La disponibilité,
+              les points attribués et les possibilités de récompense varient
+              selon le profil et les conditions du service.
+            </p>
 
-          <a
-            class="btn btn-primary"
-            href="https://www.lifepoints.fr/"
-            target="_blank"
-            rel="noopener noreferrer">
-            Découvrir LifePoints <span aria-hidden="true">↗</span>
-          </a>
-        </article>
-      </div>
-
-      <div class="fineprint">
-        <strong>À savoir :</strong> les liens peuvent être des liens de parrainage.
-        CashLink peut recevoir une commission ou une récompense si certaines conditions
-        sont remplies. Cela ne garantit aucun revenu pour toi ni pour le site.
-      </div>
-    </section>
-
-    <section class="section wrap" id="fonctionnement">
-      <div class="kicker">Simple et transparent</div>
-      <h2>Comment ça marche ?</h2>
-      <p style="color: var(--muted); max-width: 680px;">
-        Quelques étapes pour explorer les offres en gardant le contrôle sur tes choix.
-      </p>
-
-      <div class="steps">
-        <article class="step">
-          <div class="step-num">1</div>
-          <h3>Choisis une plateforme</h3>
-          <p>Consulte les offres disponibles et sélectionne celle qui t'intéresse.</p>
-        </article>
-
-        <article class="step">
-          <div class="step-num">2</div>
-          <h3>Lis les conditions</h3>
-          <p>Vérifie l'éligibilité, les éventuels seuils de retrait et les règles du partenaire.</p>
-        </article>
-
-        <article class="step">
-          <div class="step-num">3</div>
-          <h3>Vérifie les récompenses</h3>
-          <p>Les récompenses éventuelles dépendent du partenaire et de la validation de tes actions.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section wrap" id="conseils">
-      <div class="section-head">
-        <div>
-          <div class="kicker">Avant de commencer</div>
-          <h2>Nos conseils utiles</h2>
-          <p>Quelques réflexes pour explorer les plateformes avec prudence.</p>
-        </div>
-      </div>
-
-      <div class="notice">
-        <article class="notice-card">
-          <h3>🔎 Vérifie les règles</h3>
-          <p>
-            Lis les conditions, les critères d'éligibilité, les seuils de retrait
-            et les moyens de paiement proposés par chaque plateforme.
-          </p>
-        </article>
-
-        <article class="notice-card">
-          <h3>🛡️ Protège tes données</h3>
-          <p>
-            N'envoie jamais ton mot de passe à un tiers. Évite les offres qui
-            promettent des gains garantis ou demandent un paiement suspect.
-          </p>
-        </article>
-      </div>
-    </section>
-
-    <section class="wrap" id="transparence">
-      <div class="cta">
-        <div>
-          <div class="kicker">CashLink s'engage</div>
-          <h2>Des informations claires, sans promesses irréalistes.</h2>
-          <p>Prends le temps de vérifier chaque plateforme avant de t'inscrire.</p>
+            <a
+              class="button"
+              href="https://www.lifepoints.fr/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Découvrir LifePoints ↗</a>
+          </article>
         </div>
 
-        <a class="btn btn-primary" href="#offres">
-          Explorer les offres <span aria-hidden="true">→</span>
-        </a>
-      </div>
+        <p class="empty-message" id="emptyMessage">
+          Aucune plateforme ne correspond à ta recherche. Essaie un autre mot.
+        </p>
 
-      <div class="fineprint">
-        <strong>Transparence et indépendance :</strong> CashLink est un site indépendant.
-        Freecash et LifePoints sont des plateformes tierces et restent responsables de leurs
-        propres services, conditions et récompenses. Les résultats varient selon les profils
-        et les actions réalisées. L'accès à CashLink est gratuit ; des frais ou conditions
-        peuvent toutefois s'appliquer sur les sites partenaires.
+        <p class="disclaimer">
+          CashLink est un site indépendant. Les offres sont proposées par des
+          plateformes tierces. Vérifie toujours les règles, les critères
+          d'éligibilité et les conditions de retrait avant de commencer.
+        </p>
+      </div>
+    </section>
+
+    <section id="fonctionnement">
+      <div class="container">
+        <div class="center-heading">
+          <h2>Comment ça marche ?</h2>
+          <p>Quelques étapes simples pour commencer prudemment.</p>
+        </div>
+
+        <div class="steps-grid">
+          <article class="info-card">
+            <span class="number">01</span>
+            <h3>Choisis une plateforme</h3>
+            <p>Consulte les options présentées et vérifie si le service est adapté à ton profil.</p>
+          </article>
+
+          <article class="info-card">
+            <span class="number">02</span>
+            <h3>Lis les conditions</h3>
+            <p>Regarde les règles des missions, les critères d'éligibilité et le seuil de retrait.</p>
+          </article>
+
+          <article class="info-card">
+            <span class="number">03</span>
+            <h3>Vérifie tes récompenses</h3>
+            <p>Consulte directement ton compte sur la plateforme pour suivre les points ou gains confirmés.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="conseils">
+      <div class="container">
+        <div class="tips">
+          <h3>💡 Quelques conseils utiles</h3>
+          <ul>
+            <li>Ne paie jamais pour accéder à une offre présentée comme gratuite.</li>
+            <li>Ne communique jamais ton mot de passe bancaire.</li>
+            <li>Lis les conditions de retrait avant de consacrer du temps à une mission.</li>
+            <li>Ne crée pas plusieurs comptes si les règles de la plateforme l'interdisent.</li>
+            <li>Les revenus ne sont pas garantis et peuvent être nuls certains jours.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="avantages">
+      <div class="container">
+        <div class="center-heading">
+          <h2>Pourquoi utiliser CashLink ?</h2>
+          <p>Un point de départ simple pour explorer des services en ligne.</p>
+        </div>
+
+        <div class="benefits-grid">
+          <article class="info-card">
+            <h3>🔎 Une sélection accessible</h3>
+            <p>Retrouve les liens vers les plateformes depuis une seule page.</p>
+          </article>
+
+          <article class="info-card">
+            <h3>📱 Pensé pour mobile</h3>
+            <p>Consulte le site depuis ton téléphone, sans installer d'application CashLink.</p>
+          </article>
+
+          <article class="info-card">
+            <h3>🛡️ Des attentes réalistes</h3>
+            <p>Les gains éventuels dépendent des plateformes et de leurs conditions.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="container">
+        <div class="center-heading">
+          <h2>Questions fréquentes</h2>
+          <p>Les informations essentielles avant de commencer.</p>
+        </div>
+
+        <div class="faq-list">
+          <details>
+            <summary>CashLink est-il gratuit ?</summary>
+            <p>
+              La consultation de CashLink est gratuite. Les plateformes externes
+              peuvent avoir leurs propres conditions, qu'il faut lire avant de
+              participer à une offre.
+            </p>
+          </details>
+
+          <details>
+            <summary>Combien peut-on gagner ?</summary>
+            <p>
+              Aucun montant n'est garanti. Les résultats varient selon les
+              activités disponibles, ton profil, le temps investi et les règles
+              de chaque plateforme.
+            </p>
+          </details>
+
+          <details>
+            <summary>Quand puis-je retirer mes récompenses ?</summary>
+            <p>
+              Chaque plateforme fixe ses propres seuils, méthodes de paiement
+              et délais. Consulte ses conditions officielles pour connaître
+              les règles applicables à ton compte.
+            </p>
+          </details>
+
+          <details>
+            <summary>CashLink est-il affilié à ces plateformes ?</summary>
+            <p>
+              Certains liens peuvent être des liens de parrainage. Si une
+              plateforme verse une commission à CashLink, cela doit être
+              clairement indiqué. Une éventuelle commission ne garantit
+              aucun gain à l'utilisateur.
+            </p>
+          </details>
+
+          <details>
+            <summary>Pourquoi une publicité ne s'affiche-t-elle pas ?</summary>
+            <p>
+              L'affichage dépend notamment de la configuration publicitaire,
+              de la disponibilité des annonces, des paramètres du navigateur
+              et des règles du fournisseur. La présence du code seule ne
+              garantit pas qu'une publicité sera affichée.
+            </p>
+          </details>
+        </div>
+
+        <div class="transparency">
+          <strong>Transparence :</strong> CashLink peut utiliser des liens de
+          parrainage et des services publicitaires. Certains clics ou
+          inscriptions peuvent éventuellement générer une rémunération pour
+          le site, sans coût supplémentaire pour toi lorsque les conditions
+          du service le prévoient. Les plateformes restent responsables de
+          leurs offres, paiements et conditions.
+        </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="wrap">
-      <div class="footer-inner">
-        <a class="brand" href="#accueil">
-          <span class="brand-mark">C$</span>
-          <span>Cash<span>Link</span></span>
-        </a>
+    <div class="container footer-inner">
+      <a class="logo" href="#accueil">Cash<span>Link</span></a>
 
-        <div class="footer-links">
-          <a href="#transparence">Transparence</a>
-          <a href="#conseils">Conseils</a>
-          <a href="https://www.lifepoints.fr/" target="_blank" rel="noopener noreferrer">LifePoints</a>
-        </div>
+      <div class="footer-links">
+        <a href="#offres">Plateformes</a>
+        <a href="#faq">FAQ</a>
+        <a href="https://freecash.com/r/3A4ARU" target="_blank" rel="noopener noreferrer sponsored">Freecash ↗</a>
+        <a href="https://www.lifepoints.fr/" target="_blank" rel="noopener noreferrer">LifePoints ↗</a>
       </div>
 
-      <p class="copyright">
-        © 2026 CashLink. Tous droits réservés. Les marques citées appartiennent à leurs propriétaires respectifs.
-        Pense à ajouter des coordonnées de contact et les mentions légales/confidentialité adaptées à ton site avant une exploitation commerciale.
-      </p>
+      <p>© <span id="year"></span> CashLink · Site indépendant</p>
     </div>
   </footer>
+
+  <script>
+    // Année automatique dans le pied de page
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Recherche et filtres des plateformes
+    const searchInput = document.getElementById("offerSearch");
+    const filterButtons = document.querySelectorAll(".filter");
+    const offerCards = document.querySelectorAll(".offer-card");
+    const emptyMessage = document.getElementById("emptyMessage");
+
+    let activeFilter = "all";
+
+    function updateOffers() {
+      const searchTerm = searchInput.value.trim().toLowerCase();
+      let visibleCount = 0;
+
+      offerCards.forEach((card) => {
+        const category = card.dataset.category || "";
+        const text = card.textContent.toLowerCase();
+
+        const matchesFilter =
+          activeFilter === "all" ||
+          category.split(" ").includes(activeFilter);
+
+        const matchesSearch = text.includes(searchTerm);
+        const visible = matchesFilter && matchesSearch;
+
+        card.hidden = !visible;
+
+        if (visible) {
+          visibleCount++;
+        }
+      });
+
+      emptyMessage.style.display = visibleCount === 0 ? "block" : "none";
+    }
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        activeFilter = button.dataset.filter;
+
+        filterButtons.forEach((item) => {
+          item.classList.toggle("active", item === button);
+        });
+
+        updateOffers();
+      });
+    });
+
+    searchInput.addEventListener("input", updateOffers);
+  </script>
 </body>
 </html>
