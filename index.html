@@ -1,12 +1,13 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#081426">
-  <meta name="description" content="CashLink rassemble des bons plans, des sondages et des applications à découvrir.">
-  <title>CashLink — Les bons plans</title>
+
+  <title>CashLink — Les bons plans pour gagner de l'argent</title>
+
+  <meta name="description" content="Découvre des sites de récompenses, des sondages rémunérés et des bons plans pour gagner un peu d'argent en ligne.">
 
   <style>
     :root {
@@ -14,210 +15,340 @@
       --card: #111f35;
       --green: #70ff42;
       --text: #f5f7fb;
-      --muted: #a9b6c9;
+      --muted: #aab6c8;
+      --border: #263752;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
       background: var(--bg);
       color: var(--text);
-      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
     }
 
     header {
-      padding: 22px 18px;
-      border-bottom: 1px solid #24334a;
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--border);
+      background: #081426;
+    }
+
+    .nav {
+      max-width: 1050px;
+      margin: auto;
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      gap: 12px;
+      gap: 15px;
     }
 
     .logo {
-      background: var(--green);
-      color: #081426;
-      border-radius: 13px;
-      padding: 10px;
-      font-size: 24px;
+      color: var(--green);
+      font-size: 25px;
       font-weight: 900;
+      text-decoration: none;
     }
 
-    h1 { font-size: 24px; margin: 0; }
-
-    header p {
-      color: var(--muted);
-      margin: 4px 0 0;
-      font-size: 13px;
-    }
-
-    main {
-      max-width: 720px;
-      margin: auto;
-      padding: 20px 16px 50px;
+    .nav-link {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 14px;
     }
 
     .hero {
-      padding: 26px 20px;
-      background: linear-gradient(135deg, #132746, #102b29);
-      border: 1px solid #254b48;
-      border-radius: 22px;
+      max-width: 900px;
+      margin: auto;
+      padding: 65px 20px 45px;
+      text-align: center;
     }
 
-    .hero h2 { font-size: 29px; margin: 0 0 12px; }
-    p { line-height: 1.55; }
-    .green { color: var(--green); }
+    .tag {
+      display: inline-block;
+      color: var(--green);
+      border: 1px solid #3a7330;
+      background: #10231a;
+      padding: 6px 13px;
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(34px, 7vw, 58px);
+      line-height: 1.1;
+      margin: 0 0 20px;
+      letter-spacing: -1.5px;
+    }
+
+    h1 span {
+      color: var(--green);
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: 0 auto 25px;
+      color: var(--muted);
+      font-size: 17px;
+    }
 
     .button {
       display: inline-block;
+      padding: 13px 22px;
+      border-radius: 10px;
       background: var(--green);
-      color: #081426;
-      padding: 13px 17px;
-      border-radius: 12px;
+      color: #07120a;
       text-decoration: none;
-      font-weight: bold;
-      margin-top: 8px;
+      font-weight: 800;
+      transition: transform 0.2s;
     }
 
-    h2.section { margin-top: 30px; }
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .container {
+      max-width: 1050px;
+      margin: auto;
+      padding: 25px 20px 55px;
+    }
+
+    .section-title {
+      margin: 0 0 8px;
+      font-size: 29px;
+    }
+
+    .section-description {
+      color: var(--muted);
+      margin: 0 0 25px;
+    }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
     }
 
     .card {
       background: var(--card);
-      border: 1px solid #293b54;
+      border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 16px;
-      overflow-wrap: anywhere;
-    }
-
-    .card .emoji { font-size: 28px; }
-    .card h3 { margin: 12px 0 7px; }
-    .card p { font-size: 14px; color: var(--muted); }
-    .tag { font-size: 12px; color: var(--green); }
-
-    footer {
-      border-top: 1px solid #293b54;
-      padding: 20px 16px;
-      color: var(--muted);
-      font-size: 12px;
-      text-align: center;
-    }
-
-    nav {
+      padding: 23px;
       display: flex;
-      gap: 9px;
-      flex-wrap: wrap;
-      margin: 20px 0;
+      flex-direction: column;
+      align-items: flex-start;
     }
 
-    nav a {
-      color: var(--green);
-      border: 1px solid #345144;
-      padding: 9px 12px;
-      border-radius: 20px;
-      text-decoration: none;
+    .icon {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 21px;
+    }
+
+    .card p {
+      color: var(--muted);
+      margin: 0 0 20px;
+      font-size: 14px;
+      flex-grow: 1;
+    }
+
+    .card .button {
+      text-align: center;
+      width: 100%;
+    }
+
+    .disclosure {
+      margin-top: 25px;
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--muted);
       font-size: 13px;
     }
 
-    @media (max-width: 400px) {
-      .grid { grid-template-columns: 1fr; }
-      .hero h2 { font-size: 25px; }
+    .tips {
+      margin-top: 40px;
+      padding: 25px;
+      border-radius: 16px;
+      background: var(--card);
+      border: 1px solid var(--border);
+    }
+
+    .tips h2 {
+      margin-top: 0;
+    }
+
+    .tips li {
+      margin-bottom: 10px;
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 25px 20px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    footer a {
+      color: var(--green);
+    }
+
+    @media (max-width: 480px) {
+      .hero {
+        padding-top: 45px;
+      }
+
+      .nav-link {
+        font-size: 12px;
+      }
+
+      .card {
+        padding: 19px;
+      }
     }
   </style>
+
+  <!-- Script Adcash fourni pour ta zone -->
+  <script
+    id="aclib"
+    type="text/javascript"
+    src="https://acscdn.com/script/aclib.js">
+  </script>
+
+  <script type="text/javascript">
+    if (window.aclib && typeof window.aclib.runAutoTag === "function") {
+      window.aclib.runAutoTag({
+        zoneId: "mc0cqnlvvn"
+      });
+    }
+  </script>
 </head>
 
 <body>
+
   <header>
-    <div class="logo">C$</div>
-    <div>
-      <h1>Cash<span class="green">Link</span></h1>
-      <p>Les bons plans à découvrir</p>
-    </div>
+    <nav class="nav">
+      <a class="logo" href="#accueil">CashLink</a>
+      <a class="nav-link" href="#offres">Découvrir les offres ↓</a>
+    </nav>
   </header>
 
   <main>
-    <section class="hero">
-      <p class="green">BIENVENUE SUR CASHLINK</p>
-      <h2>Les bons plans, <span class="green">au même endroit.</span></h2>
-      <p>Découvre des offres partenaires, des sondages et des applications utiles depuis ton téléphone.</p>
-      <a class="button" href="#offres">Découvrir les offres ↓</a>
+    <section class="hero" id="accueil">
+      <div class="tag">⚡ BONS PLANS EN LIGNE</div>
+
+      <h1>Découvre des offres.<br><span>Gagne des récompenses.</span></h1>
+
+      <p>
+        Retrouve des plateformes de sondages et de récompenses.
+        Choisis celles qui te conviennent et vérifie leurs conditions
+        avant de commencer.
+      </p>
+
+      <a class="button" href="#offres">Voir les offres</a>
     </section>
 
-    <nav>
-      <a href="#offres">Offres</a>
-      <a href="#sondages">Sondages</a>
-      <a href="#jeux">Jeux & applis</a>
-      <a href="#parrainage">Parrainage</a>
-    </nav>
+    <section class="container" id="offres">
+      <h2 class="section-title">Les offres du moment</h2>
 
-    <h2 class="section" id="offres">🛍️ Offres partenaires</h2>
-    <p>Retrouve ici les offres vérifiées. Les liens affiliés seront ajoutés après acceptation par les partenaires.</p>
+      <p class="section-description">
+        Sélection de plateformes à découvrir. Les gains ne sont jamais garantis.
+      </p>
 
-    <div class="grid">
-      <article class="card">
-        <div class="emoji">🎁</div>
-        <h3>Bons plans</h3>
-        <p>Découvre les promotions des boutiques partenaires.</p>
-        <span class="tag">Offres à ajouter</span>
-      </article>
+      <div class="grid">
 
-      <article class="card" id="sondages">
-        <div class="emoji">📋</div>
-        <h3>Sondages rémunérés</h3>
-        <p>Partage ton opinion sur LifePoints. Les récompenses dépendent des conditions de la plateforme.</p>
-        <a class="button" href="https://www.lifepoints.fr/" target="_blank" rel="noopener noreferrer">Découvrir LifePoints ↗</a>
-        <p><span class="tag">Inscription gratuite · Conditions applicables</span></p>
-      </article>
+        <article class="card">
+          <div class="icon">🎁</div>
+          <h3>Freecash</h3>
+          <p>
+            Découvre des missions, des jeux et des offres pouvant
+            donner droit à des récompenses selon les conditions proposées.
+          </p>
+          <a
+            class="button"
+            href="https://freecash.com/r/3A4ARU"
+            target="_blank"
+            rel="noopener noreferrer">
+            Découvrir Freecash →
+          </a>
+        </article>
 
-      <article class="card" id="jeux">
-        <div class="emoji">🎮</div>
-        <h3>Jeux & applications</h3>
-        <p>Découvre des jeux, des applications et des offres sur Freecash. Les récompenses dépendent des conditions et de la validation des offres.</p>
-        <a class="button" href="https://freecash.com/r/3A4ARU" target="_blank" rel="noopener noreferrer">Découvrir Freecash ↗</a>
-        <p><span class="tag">Lien de parrainage · Conditions applicables</span></p>
-      </article>
+        <article class="card">
+          <div class="icon">📝</div>
+          <h3>LifePoints</h3>
+          <p>
+            Participe à des sondages en ligne et consulte les modalités
+            de récompense et les critères d'éligibilité.
+          </p>
+          <a
+            class="button"
+            href="https://www.lifepoints.fr/"
+            target="_blank"
+            rel="noopener noreferrer">
+            Découvrir LifePoints →
+          </a>
+        </article>
 
-      <article class="card" id="parrainage">
-        <div class="emoji">👥</div>
-        <h3>Parrainage</h3>
-        <p>Les programmes de parrainage seront affichés lorsque leurs conditions seront confirmées.</p>
-        <span class="tag">Bientôt disponible</span>
-      </article>
-    </div>
+        <article class="card">
+          <div class="icon">💡</div>
+          <h3>Nos prochains bons plans</h3>
+          <p>
+            D'autres plateformes pourront être ajoutées après vérification
+            de leur fonctionnement et de leurs conditions.
+          </p>
+          <a class="button" href="#conseils">
+            Lire nos conseils →
+          </a>
+        </article>
 
-    <h2 class="section">💚 Comment ça fonctionne ?</h2>
-    <div class="card">
-      <p>1. Choisis une offre.</p>
-      <p>2. Lis les conditions du partenaire.</p>
-      <p>3. Ouvre le site partenaire avec son lien.</p>
-      <p>4. Si une action éligible est validée, CashLink peut recevoir une commission.</p>
-    </div>
+      </div>
 
-    <h2 class="section">🔎 Transparence</h2>
-    <p>Certains liens sont des liens de parrainage ou pourront être affiliés. CashLink peut percevoir une commission selon les conditions du partenaire. Aucun gain n'est garanti.</p>
+      <div class="disclosure">
+        <strong>Transparence :</strong>
+        certains liens peuvent être des liens de parrainage.
+        Le site peut recevoir une commission ou une récompense si tu
+        t'inscris ou effectues une action éligible. Cela ne garantit
+        aucun revenu et les conditions dépendent de chaque plateforme.
+      </div>
+
+      <section class="tips" id="conseils">
+        <h2>Conseils avant de commencer</h2>
+        <ul>
+          <li>Lis les conditions de chaque offre avant de t'inscrire.</li>
+          <li>Ne paie jamais pour une promesse de gains garantis.</li>
+          <li>Vérifie les seuils de retrait et les moyens de paiement disponibles.</li>
+          <li>Ne communique jamais ton mot de passe ou tes informations bancaires à un site douteux.</li>
+          <li>Les résultats varient selon ton profil, ton pays et le temps consacré.</li>
+        </ul>
+      </section>
+    </section>
   </main>
 
   <footer>
-    © CashLink · Bons plans et affiliation<br>
-    Contact : ajoute une adresse de contact avant publication.
+    <p>© 2026 CashLink — Tous droits réservés.</p>
+    <p>
+      Les plateformes citées sont indépendantes de CashLink.
+      Vérifie leurs conditions directement sur leurs sites.
+    </p>
   </footer>
 
-  <!-- Script publicitaire Adcash fourni pour ta zone -->
-  <script id="aclib" type="text/javascript"
-    src="https://acscdn.com/script/aclib.js"></script>
-  <script type="text/javascript">
-    window.addEventListener("load", function () {
-      if (window.aclib && typeof window.aclib.runAutoTag === "function") {
-        window.aclib.runAutoTag({
-          zoneId: "mc0cqnlvvn"
-        });
-      }
-    });
-  </script>
 </body>
 </html>
