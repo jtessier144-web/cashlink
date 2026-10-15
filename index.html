@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#081426">
+<title>CashLink — Les bons plans</title>
+<style>
+:root{--bg:#081426;--card:#111f35;--green:#70ff42;--text:#f5f7fb;--muted:#a9b6c9}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,sans-serif}
+header{padding:22px 18px;border-bottom:1px solid #24334a;display:flex;align-items:center;gap:12px}
+.logo{background:var(--green);color:#081426;border-radius:13px;padding:10px;font-size:24px;font-weight:900}
+h1{font-size:24px;margin:0}
+header p{color:var(--muted);margin:4px 0 0;font-size:13px}
+main{max-width:720px;margin:auto;padding:20px 16px 50px}
+.hero{padding:26px 20px;background:linear-gradient(135deg,#132746,#102b29);border:1px solid #254b48;border-radius:22px}
+.hero h2{font-size:29px;margin:0 0 12px}
+p{line-height:1.55}
+.green{color:var(--green)}
+.button{display:inline-block;background:var(--green);color:#081426;padding:13px 17px;border-radius:12px;text-decoration:none;font-weight:bold;margin-top:8px}
+h2.section{margin-top:30px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.card{background:var(--card);border:1px solid #293b54;border-radius:16px;padding:16px}
+.card .emoji{font-size:28px}
+.card h3{margin:12px 0 7px}
+.card p{font-size:14px;color:var(--muted)}
+.tag{font-size:12px;color:var(--green)}
+footer{border-top:1px solid #293b54;padding:20px 16px;color:var(--muted);font-size:12px;text-align:center}
+nav{display:flex;gap:9px;flex-wrap:wrap;margin:20px 0}
+nav a{color:var(--green);border:1px solid #345144;padding:9px 12px;border-radius:20px;text-decoration:none;font-size:13px}
+@media(max-width:400px){.grid{grid-template-columns:1fr}.hero h2{font-size:25px}}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">C$</div>
+<div><h1>Cash<span class="green">Link</span></h1><p>Les bons plans à découvrir</p></div>
+</header>
+<main>
+<section class="hero">
+<p class="green">BIENVENUE SUR CASHLINK</p>
+<h2>Les bons plans, <span class="green">au même endroit.</span></h2>
+<p>Découvre des offres partenaires, des sondages et des applications utiles depuis ton téléphone.</p>
+<a class="button" href="#offres">Découvrir les offres ↓</a>
+</section>
+<nav>
+<a href="#offres">Offres</a><a href="#sondages">Sondages</a><a href="#jeux">Jeux & applis</a><a href="#parrainage">Parrainage</a>
+</nav>
+<h2 class="section" id="offres">🛍️ Offres partenaires</h2>
+<p>Retrouve ici les offres vérifiées. Les liens affiliés seront ajoutés après acceptation par les partenaires.</p>
+<div class="grid">
+<article class="card"><div class="emoji">🎁</div><h3>Bons plans</h3><p>Découvre les promotions des boutiques partenaires.</p><span class="tag">Offres à ajouter</span></article>
+<article class="card" id="sondages"><div class="emoji">📋</div><h3>Sondages</h3><p>Consulte les conditions des enquêtes proposées par des partenaires.</p><span class="tag">Offres à vérifier</span></article>
+<article class="card" id="jeux"><div class="emoji">🎮</div><h3>Jeux & applications</h3><p>Découvre des applications et jeux proposés par des partenaires.</p><span class="tag">Offres à vérifier</span></article>
+<article class="card" id="parrainage"><div class="emoji">👥</div><h3>Parrainage</h3><p>Les programmes de parrainage seront affichés lorsque leurs conditions seront confirmées.</p><span class="tag">Bientôt disponible</span></article>
+</div>
+<h2 class="section">💚 Comment ça fonctionne ?</h2>
+<div class="card"><p>1. Choisis une offre.</p><p>2. Lis les conditions du partenaire.</p><p>3. Ouvre le site partenaire avec son lien.</p><p>4. Si une action éligible est validée, CashLink peut recevoir une commission.</p></div>
+<h2 class="section">🔎 Transparence</h2>
+<p>Certains liens pourront être affiliés. CashLink pourra percevoir une commission selon les conditions du partenaire. Aucun gain n'est garanti. Les offres et les éventuelles récompenses doivent être confirmées avant d'être annoncées.</p>
+</main>
+<footer>© CashLink · Bons plans et affiliation<br>Contact : ajoute ici ton adresse de contact avant publication.</footer>
+</body>
+</html>
